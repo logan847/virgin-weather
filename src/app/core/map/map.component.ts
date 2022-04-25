@@ -3,7 +3,6 @@ import * as mapboxgl from 'mapbox-gl';
 import { MapService } from 'src/app/services/map.service';
 import { environment } from 'src/environments/environment';
 
-
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
@@ -18,6 +17,7 @@ export class MapComponent implements OnInit {
   constructor(private mapService: MapService) { 
   }
 
+ 
   
   ngOnInit(): void {
       this.map = new mapboxgl.Map({
@@ -27,11 +27,11 @@ export class MapComponent implements OnInit {
         zoom: 5,
         center: [this.lng, this.lat]
     });
-    this.mapService.setMaker(this.map, 0.1276, 51.5072, 'London')
-    this.mapService.setMaker(this.map, 2.3522, 48.8566, 'Paris ')
-    this.mapService.setMaker(this.map, -73.9491, 40.6966, 'New york')
-    this.mapService.setMaker(this.map, 139.6503, 35.6762, 'Tokyo' )
-    this.mapService.setMaker(this.map, -118.2439,34.0543, 'Los angeles')
+    this.mapService.setMaker(this.map, 51.5072, 0.1276,  'London')
+    this.mapService.setMaker(this.map, 48.8566, 2.3522,  'Paris ')
+    this.mapService.setMaker(this.map, 40.6966, -73.9491, 'New york')
+    this.mapService.setMaker(this.map, 35.6762, 139.6503, 'Tokyo' )
+    this.mapService.setMaker(this.map, 34.0543, -118.2439, 'Los angeles')
   }
  
 }

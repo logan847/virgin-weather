@@ -10,6 +10,10 @@ import { MapComponent } from './core/map/map.component';
 import { ActionBarComponent } from './core/map/components/action-bar/action-bar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { WeatherDialogComponent } from './core/map/components/weather-dialog/weather-dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ApiService } from './services/api.service';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -24,9 +28,11 @@ import { WeatherDialogComponent } from './core/map/components/weather-dialog/wea
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatDialogModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
