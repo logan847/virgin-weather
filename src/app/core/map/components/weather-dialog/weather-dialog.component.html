@@ -1,1 +1,10 @@
-<p>weather-dialog works!</p>
+
+<ng-container *ngIf="wetherData$ | async as data; else loading">
+    <p>weather-dialog works!</p>
+    <p>Current temp: {{data.current.temp}}</p>
+    <p>Current Humidity: {{data.current.temp}}</p>
+    <p>Chance of rain today: {{data.daily[0].pop * 100}}%</p>
+</ng-container>
+<ng-template #loading>
+<p>Not loaded, not dinosaur.</p>
+</ng-template>

@@ -11,18 +11,15 @@ export class MapService {
   public map: mapboxgl.Map | undefined;
   constructor(private dialog: MatDialog, private apiService: ApiService) { }
 
-  openDialog() {
-    const dialogRef = this.dialog.open(WeatherDialogComponent);
+  openDialog(lat: number, lon: number) {
+    const dialogRef = this.dialog.open(WeatherDialogComponent, {
+      data: { lat: lat, lon: lon },
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
   }
-
-  getwetherdata(lat:number, lon:number){
-    this.apiService.getWeather(lat.toString() , lon.toString())
-  }
-
 
   setMaker(mapObj:mapboxgl.Map, lat: number, lon:number, name: string){
    this.apiService.getWeathercurrent(lat.toString() , lon.toString()).subscribe(x => {
@@ -41,8 +38,7 @@ export class MapService {
     );
     el.style.borderRadius = `25px`;
     el.addEventListener('click', () => {
-      this.getwetherdata(lat,lon);
-      this.openDialog();
+      this.openDialog(lat,lon);
       });
     new mapboxgl.Marker(el)
     .setLngLat([lon,lat])
