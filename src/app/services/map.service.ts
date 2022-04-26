@@ -8,7 +8,7 @@ import {take, tap} from 'rxjs/operators'
   providedIn: 'root'
 })
 export class MapService {
-  public map: mapboxgl.Map | undefined;
+  public map:mapboxgl.Map | undefined
   constructor(private dialog: MatDialog, private apiService: ApiService) { }
 
   openDialog(lat: number, lon: number) {
@@ -21,8 +21,9 @@ export class MapService {
     });
   }
 
-  setMaker(mapObj:mapboxgl.Map, lat: number, lon:number, name: string){
-   this.apiService.getWeathercurrent(lat.toString() , lon.toString()).subscribe(x => {
+  setMaker(mapObj:mapboxgl.Map, lat: number, lon:number, name?: string){
+    this.map = mapObj;
+    this.apiService.getWeathercurrent(lat.toString() , lon.toString()).subscribe(x => {
     const el = document.createElement('div');
     el.className = 'marker';
     el.style.background ='red'

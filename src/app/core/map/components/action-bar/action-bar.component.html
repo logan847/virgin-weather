@@ -1,4 +1,19 @@
-<button>add</button>
-<input type="text" placeholder="lat">
-<input type="text" placeholder="long">
+
+<form [formGroup]="geoForm" (ngSubmit)="onSubmit()" class="example-form">
+    <mat-form-field appearance="fill" class="me-3">
+        <mat-label>Lat</mat-label>
+        <input matInput formControlName="latFormControl" numbersOnly>
+        <mat-error >
+          Must be number between 90 and -90.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Lon</mat-label>
+        <input matInput formControlName="lonFormControl">
+        <mat-error >
+          Must be number between 180 and -180.
+        </mat-error>
+      </mat-form-field>
+      <button class="ms-3" type="submit" [disabled]="!geoForm.valid" mat-raised-button>Add marker</button>
+  </form>
 <button>remove</button>
